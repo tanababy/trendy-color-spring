@@ -1,0 +1,50 @@
+variables:
+  GIT_STRATEGY: none
+  DEPLOY_PATH: "/home/dev.pre-stages.net/public_html/s"
+  DEPLOY_URL: "http://dev.pre-stages.net/l/"
+  STAGE_URL: "https://pre-stages.net/_l/"
+  HTDOCS: "dist"
+  BUILD_ID: "www"
+stages:
+  - deploy
+  - stage
+develop:
+  type: deploy
+  script:
+    - cd $DEPLOY_PATH
+    - if [ -e /$DEPLOY_PATH/$CI_PROJECT_NAME ]; then
+    -   cd $CI_PROJECT_NAME
+    -   git pull
+    - else
+    -   rm -fr $CI_PROJECT_NAME
+    -   echo $CI_COMMIT_REF_NAME
+    -   echo git@gitlab.pre-stages.net:$CI_PROJECT_PATH.git
+    -   git clone -b $CI_COMMIT_REF_NAME git@gitlab.pre-stages.net:$CI_PROJECT_PATH.git
+    - fi
+  tags:
+    - shell
+  only:
+    - develop
+  environment:
+    name: dev
+    url: $DEPLOY_URL/$CI_PROJECT_NAME/htdocs/
+stage:
+  type: stage
+  script:
+    - eval `ssh-agent`
+    - ssh-add -k /home/gitlab-runner/.ssh/id_deploy
+    - export COPYPATH=$DEPLOY_PATH/$CI_PROJECT_NAME/$HTDOCS
+    - export BUILD_ID=$BUILD_ID
+    - export JOB_NAME=$CI_PROJECT_NAME
+    - export ADDFOLDER=''
+    - export LIVEPATH=''
+    - cd /var/lib/jenkins/cap/test/
+    - /usr/local/bin/cap ci archivego
+  tags:
+    - shell
+  only:
+    - stage
+  environment:
+    name: stage
+    url: $STAGE_URL/$CI_PROJECT_NAME/$BUILD_ID/
+  when: on_success
