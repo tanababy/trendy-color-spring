@@ -25,6 +25,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css">
     <link rel="stylesheet" href="./css/style.min.css">
   </head>
   <body class="top">
@@ -34,11 +35,20 @@
       </div>
     </header>
     <main class="wrapper" role="main">
-      <div class="test">Hello World!<br class="sp-hide">あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。<br>またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、<br class="pc-hide">いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。<br>では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう。</div>
+      <h1>firebase databaseの簡易テスト</h1>
+      <input type="text" id="message_input">
+      <p id="message_output"></p>
+      <div class="color-picker-wrap">
+        <div class="color-picker"></div>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer__copyright"><small>&copy; 1995-2018 xxxxxx Company, Limited All Rights Reserved.</small></div>
-    </footer>
+    </footer><!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script><!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
     <script src="./js/vendor.js"></script>
     <script src="./js/script.js"></script>
   </body>
