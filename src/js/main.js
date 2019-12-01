@@ -3,11 +3,25 @@ import ScrollToPlugin from "gsap/ScrollToPlugin";
 const plugins = [ScrollToPlugin];
 
 // import '@simonwep/pickr/dist/themes/classic.min.css';   // 'classic' theme
-
 import BrowserCheck from "./utils/browserCheck";
 import gsapEasing from "./utils/gsapEasing";
 import colorPicker from "./modules/colorPicker";
 import firebaseRdb from "./model/firebase";
+
+// Your web app's Firebase configuration
+let firebaseConfig = {
+  apiKey: "AIzaSyB6MBHpgCNs2XeuNdr8QPvF7GsNT_SsBko",
+  authDomain: "project-trendy-color-spring.firebaseapp.com",
+  databaseURL: "https://project-trendy-color-spring.firebaseio.com",
+  projectId: "project-trendy-color-spring",
+  storageBucket: "project-trendy-color-spring.appspot.com",
+  messagingSenderId: "1022152638833",
+  appId: "1:1022152638833:web:7ee487a0e598f2dbe6b6d0",
+  measurementId: "G-V1PVE118Q9"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 $(function () {
   /*===================================================*/

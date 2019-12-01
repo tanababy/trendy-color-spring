@@ -18,3 +18,5 @@ yarn-error.log*
 # 空ディレクトリをGitで監視するために、
 # 下記ファイルを監視
 !.gitkeep
+
+.env
