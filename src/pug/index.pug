@@ -6,13 +6,56 @@ block append params
     URL = "index.html"//このページのドメイン以下のパスを入力
     OG = "share.png";//og画像の画像名を拡張子まで入力
     DIR = "./";//このページで使用するパスを記入。例えば第二階層なら「../」になる。
-    TITLE = "Trendy Color Spring";
-    DESCRIPTION = "流行色を、民主化しよう。";
+    TITLE = "Choose Our Trend Color | 流行色を、民主化しよう。";
+    DESCRIPTION = "流行色を、民主化しよう";
     KEYWORDS = "";
 
 block contents
-  h1 firebase databaseの簡易テスト
-  input(type="text" id="message_input")
-  p(id="message_output")
-  .color-picker-wrap
-    .color-picker
+  .keyvisual
+    #canvas-container
+    h1.keyvisual__title Choose Our Trend Color
+    //- #app
+  .section-statement.is-enter-statement
+    .section-statement__inner
+      p.section-statement__desc 流行色を、民主化しよう。
+      p.section-statement__desc 流行色の決まり方を知っているか。
+        br
+        | 国際流行色委員会。
+        br
+        | 世界の専門機関が毎年決めている。
+      p.section-statement__desc 果たして、それは「流行」か？
+        br
+        | 「流行」は乗るものか、
+        br
+        | 作り出すものか。
+      p.section-statement__desc 誰かが決めた流行に乗る？
+        br
+        | 流行に流された、
+        br
+        | あなたのInstagram・Twitterのタイムラインは誰のもの？
+        br
+        | 自分たちの色は、自分たちで決めろ。
+      p.section-statement__desc このサイトに、
+        br
+        | 大きな"パレット"を用意した。
+        br
+        | みんなが色を混ぜることができる、WEB上のパレットだ。
+      p.section-statement__desc いま、流行色は解放された。
+        br
+        | あなたが流行だと思う色を混ぜて、
+        br
+        | 自分たちだけの流行色を作ろう。
+  .section-irritate(id="anchor-irritate").is-enter-irritate
+    p.section-irritate__text Current Trending Color is...
+  .section-result.is-enter-result
+    .section-result__square
+      .section-result__hx #FFFFFF
+      .section-result__rgb
+        span.section-result__rgb-unit.section-result__rgb-unit--r R: 255
+        span.section-result__rgb-unit.section-result__rgb-unit--g G: 255
+        span.section-result__rgb-unit.section-result__rgb-unit--b B: 255
+      .section-result__count Number of votes: 260
+    .section-vote
+      p.section-vote__title BLEND NOW！CLICK ANYWHERE.
+      .color-picker-wrap
+        .color-picker

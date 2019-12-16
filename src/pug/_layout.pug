@@ -5,10 +5,16 @@ html(lang="ja")
     include ./_include/_inc_meta.pug
 
   body(class=KEY)
-    include ./_include/_inc_header.pug
+    include ./_include/_inc_pointer.pug
+    .thankyou
+      .thankyou__inner
+        p.thankyou__title Thank you for blending!
+          br
+          | Please wait.
+        .thankyou__bar
 
     main.wrapper(role="main")
       block contents
 
-    include ./_include/_inc_footer.pug
+    //- include ./_include/_inc_footer.pug
     include ./_include/_inc_js.pug

@@ -1,14 +1,17 @@
 import Pickr from '@simonwep/pickr/dist/pickr.es5.min';
 import blend_colors from "./colorBlender";
 import firebaseRdb from "../model/firebase";
+import TweenMax from 'gsap/TweenMaxBase';
 
 export default class colorPicker {
 
   constructor() {
     this.pickr;
     this.pickedColor;
+    this.pickedColorRGB;
 
     this.firebaseDB = new firebaseRdb();
+
   }
 
   initEvents(color) {
@@ -53,9 +56,11 @@ export default class colorPicker {
     this.onChangeColor();
   }
 
-  onChangeColor() {
+  onChangeColor() {//カラーピッカーで色を選択したら
     this.pickr.on('save', (color, instance) => {
-      this.pickedColor = this.pickr.getColor().toHEXA().toString();
+      this.pickedColor = this.pickr.getColor().toHEXA().toString();//いつも使ってる16進数に変換
+      this.pickedColorRGB = this.pickr.getColor().toRGBA();
+
       let blendedColor;
 
       if (this.pickedColor.length !== 7) {//カラーコードの文字列が多い場合
@@ -64,9 +69,47 @@ export default class colorPicker {
         blendedColor = blend_colors(this.currentColor, this.pickedColor, .5);
       }
 
-      this.hide();
-      this.destroy();
-      this.firebaseDB.updatePallette(blendedColor);
+      TweenMax.to($('.thankyou__inner'), .4, {
+        x: '0%',
+        ease: 'easeInOutQuint',
+      });
+      TweenMax.to($('.thankyou'), .4, {
+        x: '0%',
+        ease: 'easeInOutQuint',
+        onComplete: () => {
+          TweenMax.to(window, .5, {
+            scrollTo: {
+              y: $('#anchor-irritate').offset().top,
+              autoKill: false,
+            },
+            onComplete: () => {
+              setTimeout(() => {
+                TweenMax.to($('.thankyou__inner'), .4, {
+                  x: '-100%',
+                  ease: 'easeInOutQuint',
+                });
+                TweenMax.to($('.thankyou'), .4, {
+                  x: '100%',
+                  ease: 'easeInOutQuint',
+                });
+              }, 1000);
+            },
+            ease: 'easeInOutQuint',
+          });
+          this.hide();//カラーピッカーを表示上隠す
+          this.destroy();//カラーピッカー一旦無効化
+        }
+      });
+
+
+      this.firebaseDB.updatePallette(blendedColor);//firebaseのデータ更新
+      this.firebaseDB.updateRgb(this.pickedColorRGB);//firebaseのデータ更新
+
+      this.firebaseDB.countRef.once('value').then((snapshot) => {//総投票回数のインクリメント
+        let countNumber = Number(snapshot.val());//firebaseで保存していた値を取得
+
+        this.firebaseDB.incrementCount(countNumber);
+      });
 
     });
   }

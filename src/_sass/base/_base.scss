@@ -17,11 +17,28 @@ body {
 body {
   line-height: $line-height-pc;
   min-width: $minwidth-pc * 1px;
+  transition: background-color 500ms linear, color 500ms linear;
+  overscroll-behavior-y: none;
+  background-color: #000;
+
+  &.iphone.chrome,
+  &.android.chrome {
+    overscroll-behavior-y: auto;
+  }
 
   @include sp {
     line-height: $line-height-sp;
     min-width: $minwidth-sp * 1px;
   }
+
+  &.bg-irritate {
+    background-color: #fff!important;
+    color: #000!important;
+  }
+}
+
+.wrapper {
+  overflow-x: hidden;
 }
 
 /* ---------------------------------------------
@@ -57,5 +74,211 @@ img[src$=".svg"] {
 @include not-sp {
   .pc-hide {
     display: none !important;
+  }
+}
+
+/* ---------------------------------------------
+*   mouse pointer
+--------------------------------------------- */
+.mouse-pointer {
+  will-change: transform;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  mix-blend-mode: exclusion;
+  pointer-events: none;
+  
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+  }
+  
+  &__vote {
+    position: absolute;
+    z-index: 100;
+    width: 190px;
+    height: 190px;
+    
+    svg {
+      width: 100%;
+      height: 100%;
+      animation: rotateInfinite 7s infinite linear;
+    }
+
+    text {
+      font-size: 15px;
+      fill: #fff;
+    }
+  }
+
+  &.is-vote &__vote {
+    opacity: 1;
+  }
+
+  &__vote-inner {
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: transform 200ms ease;
+  }
+
+  &.is-vote &__vote-inner {
+    transform: scale(1);
+    transition: transform 700ms map-get($ease, easeInOutQuint);
+  }
+
+  &__irritate {
+    position: absolute;
+    z-index: 100;
+    width: 190px;
+    height: 190px;
+    
+    svg {
+      width: 100%;
+      height: 100%;
+      animation: rotateBlinkInfinite 7s infinite linear;
+    }
+
+    text {
+      font-size: 15px;
+      fill: #000;
+    }
+  }
+
+  &.is-irritate &__irritate {
+    opacity: 1;
+  }
+
+  &__irritate-inner {
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: transform 200ms ease;
+  }
+
+  &.is-irritate &__irritate-inner {
+    transform: scale(1);
+    transition: transform 700ms map-get($ease, easeInOutQuint);
+  }
+  
+  
+  &__point {
+    position: absolute;
+    opacity: 1;
+    background-color: yellowgreen;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    will-change: transform;
+    transition: opacity 100ms;
+  }
+
+  &.is-vote &__point,
+  &.is-irritate &__point {
+    opacity: 0;
+  }
+}
+
+@keyframes rotateInfinite {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateBlinkInfinite {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  5% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  45% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
   }
 }

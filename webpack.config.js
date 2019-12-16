@@ -51,6 +51,7 @@ module.exports = {
               "presets": [
                 ["@babel/preset-env", {
                   "useBuiltIns": false,
+                  "targets": { "node": true }
                 }],
               ],
               "plugins": [
@@ -58,6 +59,23 @@ module.exports = {
               ]
             }
           }
+        ]
+      },
+      {
+        test: /\.(jpg|png|gif|svg)$/,
+        loaders: 'url-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: "json-loader",
+        type: "javascript/auto"
+      },
+      {
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        exclude: /node_modules/,
+        use: [
+          'raw-loader',
+          'glslify-loader'
         ]
       }
     ]
@@ -73,7 +91,8 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: "jquery"
+      $: "jquery",
+      'THREE': 'three/build/three'
     })
   ]
 };

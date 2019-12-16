@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <title>Trendy Color Spring</title>
-    <meta content="流行色を、民主化しよう。" name="description">
+    <title>Choose Our Trend Color | 流行色を、民主化しよう。</title>
+    <meta content="流行色を、民主化しよう" name="description">
     <meta content="" name="keywords">
-    <meta content="Trendy Color Spring" property="og:title">
-    <meta content="流行色を、民主化しよう。" property="og:description">
+    <meta content="Choose Our Trend Color | 流行色を、民主化しよう。" property="og:title">
+    <meta content="流行色を、民主化しよう" property="og:description">
     <meta content="https://www.sample.com/share.png" property="og:image">
     <meta content="https://www.sample.com/index.html" property="og:url">
     <meta content="website" property="og:type">
@@ -27,24 +27,78 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css">
     <link rel="stylesheet" href="./css/style.min.css">
+    <script src="//typesquare.com/3/tsst/script/ja/typesquare.js?9wNAkSucn3w%3D" charset="utf-8"></script>
   </head>
   <body class="top">
-    <header class="header">
-      <div class="header__logo">
-        <h1><a href="https://www.sample.com/"><img src="./img/common/header_logo.png" alt="Plus D"></a></h1>
+    <div class="mouse-pointer sp-hide">
+      <div class="mouse-pointer__point"></div>
+      <div class="mouse-pointer__vote">
+        <div class="mouse-pointer__vote-inner"><svg viewBox="10,10,180,180">
+<defs>
+<path id="circlePath" d="M 25,100 A 75,75 0 1,1 175,100 A 75,75 0 1,1 25,100 z" />
+</defs>
+<g>
+<text x="10" y="10">
+<textPath xlink:href="#circlePath">BLEND NOW!  BLEND NOW!  BLEND NOW! BLEND NOW!  BLEND NOW!  BLEND NOW!</textPath>
+</text>
+</g>
+<use xlink:href="#circlePath" fill="none" />
+</svg>
+        </div>
       </div>
-    </header>
+      <div class="mouse-pointer__irritate">
+        <div class="mouse-pointer__irritate-inner"><svg viewBox="10,10,180,180">
+<defs>
+<path id="circlePath" d="M 25,100 A 75,75 0 1,1 175,100 A 75,75 0 1,1 25,100 z" />
+</defs>
+<g>
+<text x="10" y="10">
+<textPath xlink:href="#circlePath">KEEP SCROLLING!  KEEP SCROLLING!  KEEP SCROLLING!!!!!!!!!!!!!!!!</textPath>
+</text>
+</g>
+<use xlink:href="#circlePath" fill="none" />
+</svg>
+        </div>
+      </div>
+    </div>
+    <div class="thankyou">
+      <div class="thankyou__inner">
+        <p class="thankyou__title">Thank you for blending!<br>Please wait.</p>
+        <div class="thankyou__bar"></div>
+      </div>
+    </div>
     <main class="wrapper" role="main">
-      <h1>firebase databaseの簡易テスト</h1>
-      <input type="text" id="message_input">
-      <p id="message_output"></p>
-      <div class="color-picker-wrap">
-        <div class="color-picker"></div>
+      <div class="keyvisual">
+        <div id="canvas-container"></div>
+        <h1 class="keyvisual__title">Choose Our Trend Color</h1>
       </div>
-    </main>
-    <footer class="footer">
-      <div class="footer__copyright"><small>&copy; 1995-2018 xxxxxx Company, Limited All Rights Reserved.</small></div>
-    </footer><!-- The core Firebase JS SDK is always required and must be listed first -->
+      <div class="section-statement is-enter-statement">
+        <div class="section-statement__inner">
+          <p class="section-statement__desc">流行色を、民主化しよう。</p>
+          <p class="section-statement__desc">流行色の決まり方を知っているか。<br>国際流行色委員会。<br>世界の専門機関が毎年決めている。</p>
+          <p class="section-statement__desc">果たして、それは「流行」か？<br>「流行」は乗るものか、<br>作り出すものか。</p>
+          <p class="section-statement__desc">誰かが決めた流行に乗る？<br>流行に流された、<br>あなたのInstagram・Twitterのタイムラインは誰のもの？<br>自分たちの色は、自分たちで決めろ。</p>
+          <p class="section-statement__desc">このサイトに、<br>大きな"パレット"を用意した。<br>みんなが色を混ぜることができる、WEB上のパレットだ。</p>
+          <p class="section-statement__desc">いま、流行色は解放された。<br>あなたが流行だと思う色を混ぜて、<br>自分たちだけの流行色を作ろう。</p>
+        </div>
+      </div>
+      <div class="section-irritate is-enter-irritate" id="anchor-irritate">
+        <p class="section-irritate__text">Current Trending Color is...</p>
+      </div>
+      <div class="section-result is-enter-result">
+        <div class="section-result__square">
+          <div class="section-result__hx">#FFFFFF</div>
+          <div class="section-result__rgb"><span class="section-result__rgb-unit section-result__rgb-unit--r">R: 255</span><span class="section-result__rgb-unit section-result__rgb-unit--g">G: 255</span><span class="section-result__rgb-unit section-result__rgb-unit--b">B: 255</span></div>
+          <div class="section-result__count">Number of votes: 260</div>
+        </div>
+        <div class="section-vote">
+          <p class="section-vote__title">BLEND NOW！CLICK ANYWHERE.</p>
+          <div class="color-picker-wrap">
+            <div class="color-picker"></div>
+          </div>
+        </div>
+      </div>
+    </main><!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script><!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
