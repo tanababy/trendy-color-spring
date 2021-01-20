@@ -48,7 +48,7 @@
     "@simonwep/pickr": "^1.4.7",
     "dotenv": "^8.2.0",
     "glslify-loader": "^2.0.0",
-    "gsap": "^2.1.3",
+    "gsap": "^3.6.0",
     "jquery": "^3.4.1",
     "load-bmfont": "^1.4.0",
     "postprocessing": "^6.9.0",
